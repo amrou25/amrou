@@ -17,7 +17,7 @@ def res():
 @app.route('/download',methods=["POST","GET"])
 def download():
     url=request.form['url']
-    YouTube(url).streams.first().download()
+    YouTube(url).streams.first().download("template/")
     return url
 
 
