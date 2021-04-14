@@ -1,8 +1,9 @@
 from flask import Flask,render_template,request
 from youtube_search import YoutubeSearch
 from pytube import YouTube
+from flask_cors import CORS
 app = Flask(__name__,template_folder='template')
-
+CORS(app)
 @app.route('/',methods=["POST","GET"])
 def hello_world():
     return render_template('yt.html')
@@ -25,7 +26,13 @@ def download():
     url=request.form['url']
     YouTube(url).streams.first().download()
     return url
-
-
+    
+    #get links
+@app.route('/mult',methods=["POST","GET"])
+def mult():
+    yt = YouTube('http://youtube.com/watch?v=9bZkp7q19f0')
+    yt.streams.all()  # list of all available streams
+    a=yt.streams[0].url
+    return a
 if __name__ == "__main__":    
    app.run(debug=True)
