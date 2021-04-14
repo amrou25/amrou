@@ -30,7 +30,8 @@ def download():
     #get links
 @app.route('/mult',methods=["POST","GET"])
 def mult():
-    yt = YouTube('http://youtube.com/watch?v=9bZkp7q19f0')
+    h3=request.args.get('srch')
+    yt = YouTube(h3)
     yt.streams.all()  # list of all available streams
     a=yt.streams[0].url
     return a
