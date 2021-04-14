@@ -52,7 +52,7 @@ var x=JSON.parse(res);
      var ink=$(".frm").attr("lnk");
      var vss=x.videos[i].views;
      var tss=x.videos[i].duration;
-       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' class='col btn-primary'>حفظ</div></div></div>");
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' class='col btn-primary'>حفظ</div></div><br></div>");
    
      }
    
@@ -86,7 +86,7 @@ var x=JSON.parse(res);
      var vss=x.videos[i].views;
      var tss=x.videos[i].duration;
     
-       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid'); class='col btn-primary'>حفظ</div></div></div>");
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid'); class='col btn-primary'>حفظ</div></div><br></div>");
     
 
      }
@@ -114,7 +114,7 @@ var x=JSON.parse(res);
      var vss=x.videos[i].views;
      var tss=x.videos[i].duration;
     
-       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid')); class='col btn-primary'>حفظ</div></div></div>");
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid')); class='col btn-primary'>حفظ</div></div><br></div>");
     
 }
      }
