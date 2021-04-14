@@ -1,1 +1,225 @@
 
+<html dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+ <script  type="text/javascript">
+ 
+ function download(s){
+   
+  var pur= "https://www.youtube.com/embed//";
+  var ur=pur+s;
+  $("#ldg").show();
+  $.ajax({
+    type: "POST",
+    url: "/download",
+data:{url:ur},
+    success: function(res) {
+
+alert("Download Successfully");
+$("#ldg").hide();
+}
+});
+ }
+  function ref(){
+    $.ajax({
+    type: "POST",
+    url: "/res",
+	
+    success: function(res) {
+var x=JSON.parse(res);
+     
+     
+     for(i=0;i<x.videos.length;i++){
+     var img=x.videos[i].thumbnails;
+     var title=x.videos[i].title;
+     var sid=x.videos[i].id;
+     var ink=$(".frm").attr("lnk");
+     var vss=x.videos[i].views;
+     var tss=x.videos[i].duration;
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' class='col btn-primary'>حفظ</div></div></div>");
+   
+     }
+   
+    }
+});
+    
+  }
+  function fun(idd,v,t){
+    
+    var cv=$(".frm").attr("lnk");
+       $(".frm").attr("src",cv+idd);
+       $(".vis").html("مشاهدة<br>"+v);
+       $(".tis").html("المدة<br>"+t);
+     }
+  
+   $(function(){
+     
+$.ajax({
+    type: "POST",
+    url: "/res",
+data:$("#form").serialize(),
+    success: function(res) {
+var x=JSON.parse(res);
+     
+     
+     for(i=0;i<x.videos.length;i++){
+     var img=x.videos[i].thumbnails;
+     var title=x.videos[i].title;
+     var sid=x.videos[i].id;
+     var ink=$(".frm").attr("lnk");
+     var vss=x.videos[i].views;
+     var tss=x.videos[i].duration;
+    
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid'); class='col btn-primary'>حفظ</div></div></div>");
+    
+
+     }
+   
+     
+
+      
+    }
+});
+  $(".sff").click(function(){
+    $(".container").children("#fvd").remove();
+$.ajax({
+    type: "POST",
+    url: "/res",
+	data:$("#form").serialize(),
+    success: function(res) {
+var x=JSON.parse(res);
+     
+     
+     for(i=0;i<x.videos.length;i++){
+     var img=x.videos[i].thumbnails;
+     var title=x.videos[i].title;
+     var sid=x.videos[i].id;
+     var ink=$(".frm").attr("lnk");
+     var vss=x.videos[i].views;
+     var tss=x.videos[i].duration;
+    
+       $(".container").append("<div id='fvd'><div data-toggle='modal' data-target='#mdl' tie="+tss+" vie="+vss+" class='im' id="+sid+" onclick=fun(this.id,$(this).attr('vie'),$(this).attr('tie')); style=background-image:url("+img+");></div><div class='col tx text-break'>"+title+"</div><div class='col-xs-4 row'> <div class='vss col btn-primary'>"+vss+"</div><div class='col btn-primary'>"+tss+"<br>المدة</div><div id='save' sid="+sid+" onclick=download($(this).attr('sid')); class='col btn-primary'>حفظ</div></div></div>");
+    
+}
+     }
+});
+}); 
+}); 
+
+</script>
+<style type="text/css" media="all">
+  .im{
+background-repeat: no-repeat;
+  background-size: 100% 100%;
+    min-height: 200px;
+    width:100% !important;
+  }
+  .col{
+    
+  }
+  
+  .container{
+/*border: 30px solid pink;
+  padding: 0px;
+  border-image: url("https://i.pinimg.com/originals/95/21/2a/95212a190336e019359c52322d67e9b1.png") 20 stretch !important;
+  */
+   width:100%; 
+   height:100%;
+  }
+ .tx{
+
+   text-align: right;
+   color:black;
+  }
+ .frm{
+   /*
+border: 10px solid transparent;
+  padding: px;
+ border-image: url("https://i.pinimg.com/originals/95/21/2a/95212a190336e019359c52322d67e9b1.png") 30 stretch !important;
+  */
+   width:100% !important; 
+   height:auto;
+   
+  }
+ .af{
+   /*
+border: 10px solid transparent;
+  padding: ;
+ border-image: url("https://i.pinimg.com/originals/95/21/2a/95212a190336e019359c52322d67e9b1.png") 30 stretch !important;
+  */
+   width:100% !important; 
+   height:auto;
+   background-color: white;
+   text-align: center;
+  }
+  i{
+    
+    text-align: center !important;
+  font-size: 30px !important;
+    
+  }
+  .btn-primary{
+    text-align: center !important;
+    
+  }
+  .modal-dialog {
+  position:absolute;
+  top:50% !important;
+  transform: translate(0, -50%) !important;
+  -ms-transform: translate(0, -50%) !important;
+  -webkit-transform: translate(0, -50%) !important;
+  margin:auto 5%;
+  width:90%;
+  height:80%;
+}
+</style>
+</head>
+<body>
+<center style="display:none;" id="ldg">
+<button class="btn btn-primary" type="button">
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  ...Download Please Wait
+</button></center>
+   <div class="modal" id="mdl">
+<iframe lnk="https://www.youtube.com/embed//" class="frm" src='https://www.youtube.com/embed//mYhzPfmr5js' frameborder='0' allowfullscreen></iframe>
+  <!--<div class="af col-xs-6 row">
+    <div class="col vis">v</div>
+    <div class="col tis">t</div>
+  </div>-->
+</div>
+
+<div class="container overflow-auto">
+
+    
+ 
+
+<nav class="col-xs-2 row af navbar fixed-bottom navbar-light bg-light">
+  <form id="form" action="/res" method="POST">
+<input onchange="return false;" placeholder="search" value="youtube" type="text" name="srch">
+<i onclick="$('.sff').click();" class="col bi bi-search"></i>
+</form>
+<i class="col bi bi-star"></i>
+<i class="sff col bi bi-search"></i>
+<i onclick="ref();" class="col bi bi-arrow-repeat"></i>
+<i class="col bi bi-gear"></i>
+
+</nav>
+  </div>
+
+</body>
