@@ -24,7 +24,7 @@ def resapi():
 @app.route('/download',methods=["POST","GET"])
 def download():
     url=request.form['url']
-    YouTube(url).streams.first().download("/tmp")
+    YouTube(url).streams.first().download("/tmp/a.mp4")
     return url
     
     #get links
